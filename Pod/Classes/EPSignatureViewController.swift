@@ -78,15 +78,15 @@ open class EPSignatureViewController: UIViewController {
     
     // MARK: - Initializers
     
-    public convenience init(signatureDelegate: EPSignatureDelegate) {
+    public convenience init(signatureDelegate: EPSignatureDelegate?) {
         self.init(signatureDelegate: signatureDelegate, showsDate: true, showsSaveSignatureOption: true)
     }
     
-    public convenience init(signatureDelegate: EPSignatureDelegate, showsDate: Bool) {
+    public convenience init(signatureDelegate: EPSignatureDelegate?, showsDate: Bool) {
         self.init(signatureDelegate: signatureDelegate, showsDate: showsDate, showsSaveSignatureOption: true)
     }
     
-    public init(signatureDelegate: EPSignatureDelegate, showsDate: Bool, showsSaveSignatureOption: Bool ) {
+    public init(signatureDelegate: EPSignatureDelegate?, showsDate: Bool, showsSaveSignatureOption: Bool ) {
         self.showsDate = showsDate
         self.showsSaveSignatureOption = showsSaveSignatureOption
         self.signatureDelegate = signatureDelegate
@@ -95,7 +95,9 @@ open class EPSignatureViewController: UIViewController {
     }
 
     required public init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        //fatalError("init(coder:) has not been implemented")
+        let bundle = Bundle(for: EPSignatureViewController.self)
+        super.init(nibName: "EPSignatureViewController", bundle: bundle)
     }
     
     // MARK: - Button Actions
